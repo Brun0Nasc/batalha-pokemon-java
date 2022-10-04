@@ -17,12 +17,18 @@ public class Atacado implements Observer, IDefesa {
         
         if(acao.equals("ataque")) {
             defender();
+            perderVida(1);
         }
     }
 
     @Override
     public void defender() {
         pokemon.defender();
+    }
+    
+    public void perderVida(int valor) {
+        pokemon.setVida(pokemon.getVida() - valor);
+        System.out.println(pokemon.getNome() + " perdeu " + valor + " de vida.");
     }
     
 }
