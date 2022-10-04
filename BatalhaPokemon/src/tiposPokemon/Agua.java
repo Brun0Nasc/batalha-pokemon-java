@@ -1,6 +1,8 @@
 package tiposPokemon;
 
+import java.util.Random;
 import service.AtaqueAgua;
+import service.AtaqueCritico;
 import service.Defesa;
 import service.Pokemon;
 
@@ -17,6 +19,20 @@ public class Agua extends Pokemon {
     @Override
     public void especial() {
         System.out.println(this.getNome() + " está soltando especial!");
+    }
+
+    @Override
+    public int testaCritico() {
+        Random gerador = new Random();
+        int critico = gerador.nextInt(11);
+        
+        if(critico == 5) {
+            this.setAtaque(new AtaqueCritico(this));
+        } else {
+            this.setAtaque(new AtaqueAgua(this));
+        }
+        
+        return critico;
     }
     
 }

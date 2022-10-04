@@ -1,12 +1,11 @@
 package service;
 
 import java.util.Observable;
-import java.util.Random;
 
+// Classe do objeto observavel
 public class Atacante extends Observable implements IAtaque {
 
     private String acao = "";
-    private int critico;
     private Pokemon pokemon;
     
     public void ConfigAtacante(Pokemon p) {
@@ -17,15 +16,22 @@ public class Atacante extends Observable implements IAtaque {
     public void atacar() {
         acao = "ataque";
         
-        Random gerador = new Random();
-        critico = gerador.nextInt(11);
+        // Vendo se o ataque foi critico
+        int critico = pokemon.testaCritico();
         
         if(critico == 5) {
-            pokemon.setAtaque(new AtaqueCritico(pokemon));
             acao = "critico";
         }
         
-        pokemon.atacar();
+        // Vendo se ja tem mana o suficiente para um ataque especial
+        if(pokemon.getMana() >= 5) {
+            acao = "especial";
+            pokemon.especial();
+            pokemon.setMana(0);
+        } else {
+            pokemon.atacar();
+        }
+        
         this.notifica();
     }
     

@@ -51,8 +51,11 @@ public class BatalhaPokemon {
         Atacante atacante = new Atacante(); // Objeto observado
         Atacado atacado = new Atacado(); // Objeto observador
         int turno = 0;
+        int round = 1;
         
-        if(turno == 0) {
+        while(true){
+            System.out.println("------------------TURNO " + round + "------------------");
+            if(turno == 0) {
                 atacante.ConfigAtacante(p1); // Observado
                 
                 atacado.ConfigAtacado(p2); // Observador
@@ -64,18 +67,35 @@ public class BatalhaPokemon {
                 p2.mostrarEstado();
                 
                 turno = 1;
-        } 
-        if(turno == 1){
-            atacante.ConfigAtacante(p2);
+                
+                System.out.println("");
+            }else {
+                atacante.ConfigAtacante(p2);
             
-            atacado.ConfigAtacado(p1);
+                atacado.ConfigAtacado(p1);
             
-            atacante.addObserver(atacado);
+                atacante.addObserver(atacado);
             
-            atacante.atacar();
+                atacante.atacar();
             
-            p1.mostrarEstado();
+                p1.mostrarEstado();
+                
+                turno = 0;
+                
+                System.out.println("");
+            }
+            if(p1.getVida()  <= 0 ){
+                System.out.println(p2.getNome() + " venceu a batalha");
+                break;
+            } else if(p2.getVida() <= 0) {
+                System.out.println(p1.getNome() + " venceu a batalha");
+                break;
+            }
+            round++;
+            System.out.println("--------------------------------------------");
         }
+        
+        System.out.println("\n-----------------FIM DA BATALHA-----------------\n");
     }
 
 }
