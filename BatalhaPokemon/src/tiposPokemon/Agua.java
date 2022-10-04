@@ -10,8 +10,8 @@ public class Agua extends Pokemon {
         this.setNome(nome);
         this.setVida(10);
         this.setMana(0);
-        this.setAtaque(new AtaqueAgua());
-        this.setDefesa(new Defesa());
+        this.setAtaque(new AtaqueAgua(this));
+        this.setDefesa(new Defesa(this));
     }
 
     @Override

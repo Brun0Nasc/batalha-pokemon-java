@@ -21,7 +21,7 @@ public class Atacante extends Observable implements IAtaque {
         critico = gerador.nextInt(11);
         
         if(critico == 5) {
-            pokemon.setAtaque(new AtaqueCritico());
+            pokemon.setAtaque(new AtaqueCritico(pokemon));
             acao = "critico";
         }
         

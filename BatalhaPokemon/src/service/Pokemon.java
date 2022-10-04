@@ -46,4 +46,8 @@ public abstract class Pokemon {
         this.defesa = defesa;
     }
     public abstract void especial();
+    
+    public void mostrarEstado(){
+        System.out.printf("%s esta com %d pontos de vida e %d pontos de mana.%n", this.getNome(), this.getVida(), this.getMana());
+    }
 }

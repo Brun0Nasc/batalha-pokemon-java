@@ -28,7 +28,9 @@ public class Atacado implements Observer, IDefesa {
     
     public void perderVida(int valor) {
         pokemon.setVida(pokemon.getVida() - valor);
+        pokemon.setMana(pokemon.getMana() + 2);
         System.out.println(pokemon.getNome() + " perdeu " + valor + " de vida.");
+        System.out.println(pokemon.getNome() + " ganhou 2 de mana.");
     }
     
 }

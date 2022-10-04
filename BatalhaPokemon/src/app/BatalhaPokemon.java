@@ -10,34 +10,72 @@ public class BatalhaPokemon {
     
     public static void main(String[] args) {
         try(Scanner entrada = new Scanner(System.in)){
-            System.out.println("Informe o tipo de Pokemon (1)Agua (2)Fogo (3)Grama: ");
-            int opcaoPokemon = entrada.nextInt();
-            System.out.println("Informe o tipo nome do Pokemon: ");
-            String nomePokemon = entrada.next();
-            EscolheTipoPokemon tipoPokemon = EscolheTipoPokemon.values()[opcaoPokemon - 1];
-            Pokemon pokemon1 = tipoPokemon.obterPokemon(nomePokemon);
-            Atacante atacante = new Atacante();
-            Atacado atacado = new Atacado();
-        
-            int turno = 0;
-        
-        
-            tipoPokemon = EscolheTipoPokemon.values()[1];
-            Pokemon pokemon2 = tipoPokemon.obterPokemon("Charmander");
-        
-            if(turno == 0) {
-                // Observado
-                atacante.ConfigAtacante(pokemon1);
+            System.out.println("-------------Cadastro dos Pokemons-------------");
             
-                // Observador
-                atacado.ConfigAtacado(pokemon2);
+            // Cadastrando informações do primeiro pokemon que vai concorrer
+            System.out.print("Informe o tipo do primeiro Pokemon \n(1)Agua \n(2)Fogo \n(3)Grama \nR: ");
+            int opcaoPokemon = entrada.nextInt();
+            
+            System.out.println("");
+            
+            System.out.print("Informe o nome do Pokemon: ");
+            String nomePokemon = entrada.next();
+            
+            // As informações serão usadas para gerar o objeto do tipo que foi escolhido anteriormente
+            EscolheTipoPokemon tipoPokemon = EscolheTipoPokemon.values()[opcaoPokemon - 1]; // A instância da classe vem de uma classe enum
+            Pokemon pokemon1 = tipoPokemon.obterPokemon(nomePokemon); // Instanciando primeiro pokemon
+            
+            System.out.println("");
+            
+            // Cadastrando informações do segundo pokemon que vai concorrer
+            System.out.print("Informe o tipo do segundo Pokemon \n(1)Agua \n(2)Fogo \n(3)Grama \nR: ");
+            opcaoPokemon = entrada.nextInt();
+            
+            System.out.println("");
+            
+            System.out.print("Informe o nome do Pokemon: ");
+            nomePokemon = entrada.next();
+            
+            // As informações serão usadas para gerar o objeto do tipo que foi escolhido anteriormente
+           tipoPokemon = EscolheTipoPokemon.values()[opcaoPokemon - 1]; // A instância da classe vem de uma classe enum
+            Pokemon pokemon2 = tipoPokemon.obterPokemon(nomePokemon); // Instanciando segundo pokemon
+        
+            // * INICIANDO COMBATE
+            System.out.println("\nINICIANDO COMBATE\n");
+            iniciarBatalha(pokemon1, pokemon2);
+        }
+        
+    }
+    
+    public static void iniciarBatalha(Pokemon p1, Pokemon p2){
+        Atacante atacante = new Atacante(); // Objeto observado
+        Atacado atacado = new Atacado(); // Objeto observador
+        int turno = 0;
+        
+        if(turno == 0) {
+                atacante.ConfigAtacante(p1); // Observado
+                
+                atacado.ConfigAtacado(p2); // Observador
             
                 atacante.addObserver(atacado);
             
                 atacante.atacar();
-            }
+                
+                p2.mostrarEstado();
+                
+                turno = 1;
+        } 
+        if(turno == 1){
+            atacante.ConfigAtacante(p2);
+            
+            atacado.ConfigAtacado(p1);
+            
+            atacante.addObserver(atacado);
+            
+            atacante.atacar();
+            
+            p1.mostrarEstado();
         }
-        
     }
 
 }

@@ -10,13 +10,8 @@ public class Grama extends Pokemon {
         this.setNome(nome);
         this.setVida(10);
         this.setMana(0);
-        this.setAtaque(new AtaqueGrama());
-        this.setDefesa(new Defesa());
-    }
-    
-    @Override
-    public void defender() {
-        System.out.println(this.getNome() + " está se defendendo!");
+        this.setAtaque(new AtaqueGrama(this));
+        this.setDefesa(new Defesa(this));
     }
 
     @Override
