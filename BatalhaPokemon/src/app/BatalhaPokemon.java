@@ -1,15 +1,15 @@
 package app;
 
-import decorador.AdicionarFrase;
 import java.util.Scanner;
+import service.AdicionarCabelo;
+import service.AparenciaInicial;
 import service.Atacado;
 import service.Atacante;
 import service.EscolheTipoPokemon;
+import service.IAparenciaPokemon;
 import service.Pokemon;
 
 public class BatalhaPokemon {
-    static boolean fp1 = false;
-    static boolean fp2;
     public static void main(String[] args) {
         try(Scanner entrada = new Scanner(System.in)){
             
@@ -28,16 +28,15 @@ public class BatalhaPokemon {
             EscolheTipoPokemon tipoPokemon = EscolheTipoPokemon.values()[opcaoPokemon - 1]; // A instância da classe vem de uma classe enum
             Pokemon pokemon1 = tipoPokemon.obterPokemon(nomePokemon); // Instanciando primeiro pokemon
             
-            System.out.printf("Deseja adicionar uma frase de efeito a %s? (S)im (N)ao%nR:%n", pokemon1.getNome());
-            String frase = entrada.nextLine();
-            
-            if(frase.equals("s")){
-                System.out.print("Digite a frase: ");
-                frase = entrada.nextLine();
-                
-                pokemon1 = new AdicionarFrase(pokemon1, frase);
-                
-                fp1 = true;
+            IAparenciaPokemon a = new AparenciaInicial(pokemon1.getNome());
+            System.out.println("");
+            System.out.println(a.descrever());
+            System.out.print("\nDeseja adicionar cabelo ao pokemon? (1)Sim (2)Nao \nR:");
+            int escolha = entrada.nextInt();
+            System.out.println("");
+            if(escolha == 1){
+                a = new AdicionarCabelo(a);
+                System.out.println(a.descrever());
             }
             
             System.out.println("");
@@ -54,15 +53,23 @@ public class BatalhaPokemon {
             // As informações serão usadas para gerar o objeto do tipo que foi escolhido anteriormente
             tipoPokemon = EscolheTipoPokemon.values()[opcaoPokemon - 1]; // A instância da classe vem de uma classe enum
             Pokemon pokemon2 = tipoPokemon.obterPokemon(nomePokemon); // Instanciando segundo pokemon
-        
-            System.out.printf("Deseja adicionar uma frase de efeito a %s? (S)im (N)ao%nR:%n", pokemon2.getNome());
-            frase = entrada.nextLine();
             
-            if(frase.equals("s")){
-                System.out.print("Digite a frase: ");
-                frase = entrada.nextLine();
-                
+            a = new AparenciaInicial(pokemon2.getNome());
+            System.out.println("");
+            System.out.println(a.descrever());
+            System.out.print("\nDeseja adicionar cabelo ao pokemon? (1)Sim (2)Nao \nR:");
+            escolha = entrada.nextInt();
+            System.out.println("");
+            if(escolha == 1){
+                a = new AdicionarCabelo(a);
+                System.out.println(a.descrever());
             }
+            
+            System.out.println("");
+            pokemon1.mostrarEstado();
+            System.out.println("");
+            pokemon2.mostrarEstado();
+            System.out.println("");
             
             // * INICIANDO COMBATE
             System.out.println("\n-=-=-=-=-=-=-=-= INICIANDO COMBATE -=-=-=-=-=-=-=-=\n");
@@ -108,7 +115,7 @@ public class BatalhaPokemon {
                 
                 System.out.println("");
             }
-            if(p1.getVida()  <= 0 ){
+            if(p1.getVida() <= 0 ){
                 System.out.println(p2.getNome() + " venceu a batalha");
                 break;
             } else if(p2.getVida() <= 0) {
@@ -121,5 +128,5 @@ public class BatalhaPokemon {
         
         System.out.println("\n-----------------FIM DA BATALHA-----------------\n");
     }
-
+    
 }

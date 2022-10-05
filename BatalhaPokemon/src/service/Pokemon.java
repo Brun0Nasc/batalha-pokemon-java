@@ -1,14 +1,35 @@
 package service;
 
+import java.util.Random;
+
 public abstract class Pokemon {
     private String nome;
     private int vida;
     private int mana;
     private IAtaque ataque;
     private IDefesa defesa;
+    private IEspecial especial;
+    private String tipo;
 
     public void setAtaque(IAtaque ataque) {
         this.ataque = ataque;
+    }
+    
+    public void setDefesa(IDefesa defesa) {
+        this.defesa = defesa;
+    }
+    
+    public void setEspecial(IEspecial especial) {
+        this.especial = especial;
+    }
+
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -35,20 +56,37 @@ public abstract class Pokemon {
         this.mana = mana;
     }
     
+    
+    
     public void atacar() {
         ataque.atacar();
-    };
-    public void defender(){
-        defesa.defender();
-    };
-
-    public void setDefesa(IDefesa defesa) {
-        this.defesa = defesa;
     }
     
-    public abstract void especial();
+    public void defender(){
+        defesa.defender();
+    }
     
-    public abstract int testaCritico();
+    public void especial(){
+        especial.especial();
+    }
+    
+    public void levaDano(int valor) {
+        this.vida -= valor;
+    }
+
+     
+    public int testaCritico(){
+        Random gerador = new Random();
+        int critico = gerador.nextInt(11);
+        
+        if(critico == 5) {
+            this.setAtaque(new AtaqueCritico(this));
+        } else {
+            this.setAtaque(new AtaqueNormal(this));
+        }
+        
+        return critico;
+    };
     
     public void mostrarEstado(){
         System.out.printf("%s esta com %d pontos de vida e %d pontos de mana.%n", this.getNome(), this.getVida(), this.getMana());

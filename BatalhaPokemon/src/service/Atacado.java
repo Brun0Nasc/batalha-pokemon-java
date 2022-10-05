@@ -16,15 +16,21 @@ public class Atacado implements Observer, IDefesa {
        // Atacante atacante = (Atacante)arg0;
         String acao = String.valueOf(arg1);
         
-        if(acao.equals("ataque")) {
-            defender();
-            perderVida(1);
-        }else if(acao.equals("especial")) {
-            defender();
-            perderVida(2);
-        } else if(acao.equals("critico")) {
-            defender();
-            perderVida(3);
+        switch (acao) {
+            case "ataque" -> {
+                defender();
+                perderVida(1);
+            }
+            case "especial" -> {
+                defender();
+                perderVida(2);
+            }
+            case "critico" -> {
+                defender();
+                perderVida(3);
+            }
+            default -> {
+            }
         }
     }
 
@@ -35,7 +41,7 @@ public class Atacado implements Observer, IDefesa {
     }
     
     public void perderVida(int valor) {
-        pokemon.setVida(pokemon.getVida() - valor);
+        pokemon.levaDano(valor);
         pokemon.setMana(pokemon.getMana() + 2);
         System.out.println(pokemon.getNome() + " perdeu " + valor + " de vida.");
         System.out.println(pokemon.getNome() + " ganhou 2 de mana.");
