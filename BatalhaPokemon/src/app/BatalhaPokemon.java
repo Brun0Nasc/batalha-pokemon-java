@@ -28,6 +28,7 @@ public class BatalhaPokemon {
             EscolheTipoPokemon tipoPokemon = EscolheTipoPokemon.values()[opcaoPokemon - 1]; // A instância da classe vem de uma classe enum
             Pokemon pokemon1 = tipoPokemon.obterPokemon(nomePokemon); // Instanciando primeiro pokemon
             
+            // Parte referente ao Decorator
             IAparenciaPokemon a = new AparenciaInicial(pokemon1.getNome());
             System.out.println("");
             System.out.println(a.descrever());

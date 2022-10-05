@@ -3,7 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/tiposPokemon/Grama.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/tiposPokemon/Agua.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/AtaqueCritico.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/AtaqueNormal.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/Atacante.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/IEspecial.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/IAtaque.java</file>
             <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/app/BatalhaPokemon.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/AparenciaPokemon.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/tiposPokemon/Fogo.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/AparenciaInicial.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/Pokemon.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/AdicionarCabelo.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/Defesa.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/Especial.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/IDefesa.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/IAparenciaPokemon.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/EscolheTipoPokemon.java</file>
+            <file>file:/C:/Users/Senai%20wcc/Documents/NetBeansProjects/BatalhaPokemon/src/service/Atacado.java</file>
         </group>
     </open-files>
 </project-private>

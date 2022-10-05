@@ -11,6 +11,7 @@ public abstract class Pokemon {
     private IEspecial especial;
     private String tipo;
 
+    // Set's das interfaces
     public void setAtaque(IAtaque ataque) {
         this.ataque = ataque;
     }
@@ -23,7 +24,7 @@ public abstract class Pokemon {
         this.especial = especial;
     }
 
-    
+    // Getter's e setter's dos atributos normais
     public String getTipo() {
         return tipo;
     }
@@ -57,7 +58,7 @@ public abstract class Pokemon {
     }
     
     
-    
+    // Funções que vão implementar as interfaces
     public void atacar() {
         ataque.atacar();
     }
@@ -70,11 +71,11 @@ public abstract class Pokemon {
         especial.especial();
     }
     
+    // Funções comum entre todos os pokemons
     public void levaDano(int valor) {
         this.vida -= valor;
     }
 
-     
     public int testaCritico(){
         Random gerador = new Random();
         int critico = gerador.nextInt(11);
